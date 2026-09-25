@@ -1,0 +1,11 @@
+{
+  "name": "Rare Care",
+  "consumable": "Care Snack",
+  "price": "1000000000000000000",
+  "outcomes": [
+    { "name": "Warm crumb", "chanceBps": 4500, "reward": "200000000000000000" },
+    { "name": "Play spark", "chanceBps": 3500, "reward": "350000000000000000" },
+    { "name": "Dream mote", "chanceBps": 1500, "reward": "600000000000000000" },
+    { "name": "Lucky marble", "chanceBps": 500, "reward": "1200000000000000000" }
+  ]
+}
