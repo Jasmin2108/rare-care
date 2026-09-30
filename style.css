@@ -5,7 +5,9 @@
   overflow: hidden;
   color: #2a2118;
   font: 13px/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  background: #6f9e6a;
+  background:
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--shell-glow) 35%, transparent), transparent 42%),
+    #6f9e6a;
   --shell-a: #f4b184;
   --shell-b: #d9784a;
   --shell-glow: #ffd2b0;
@@ -22,7 +24,7 @@
   inset: 0 0 42% 0;
   background:
     radial-gradient(circle at 82% 18%, #fff6d2 0 18px, transparent 19px),
-    linear-gradient(#9fd4ef, #cfe9c4);
+    linear-gradient(color-mix(in srgb, var(--shell-glow) 28%, #9fd4ef), #cfe9c4);
 }
 .care-wall {
   position: absolute;
@@ -91,10 +93,12 @@
 .tama {
   position: absolute;
   left: 50%;
-  top: 46%;
-  width: 280px;
+  top: 48%;
+  width: 300px;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0 10px 0 rgba(42, 33, 24, 0.18));
+  filter:
+    drop-shadow(0 0 18px color-mix(in srgb, var(--shell-glow) 80%, transparent))
+    drop-shadow(0 12px 0 rgba(42, 33, 24, 0.2));
 }
 .tama-strap {
   position: absolute;
@@ -152,7 +156,7 @@
   text-align: center;
   font-size: 11px;
 }
-.tama-meters { width: 100%; display: grid; gap: 4px; padding: 4px 2px 0; }
+.tama-meters { width: 100%; display: grid; gap: 4px; padding: 4px 2px 0; position: relative; }
 .meter { display: grid; grid-template-columns: 52px 1fr 24px; gap: 6px; align-items: center; font-size: 10px; }
 .meter-track { height: 8px; border: 1px solid #f4f1e8; background: #111; }
 .meter-track i { display: block; height: 100%; background: #d9c27a; }
@@ -192,6 +196,63 @@
   padding: 6px 8px;
 }
 .care-hud p:first-child { margin-right: auto; }
+.hud-shell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.shell-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1a1410;
+  border-radius: 4px;
+  background: linear-gradient(160deg, var(--shell-a) 0 48%, var(--shell-b) 52% 100%);
+  box-shadow: 0 0 8px var(--shell-glow);
+  flex: 0 0 auto;
+}
+.shell-card {
+  position: absolute;
+  left: 50%;
+  top: 58px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 280px;
+  background: #fff8e8;
+  border: 3px solid #1a1410;
+  padding: 10px 12px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--shell-glow) 55%, transparent);
+}
+.shell-card .shell-swatch { width: 28px; height: 28px; }
+.shell-card small { display: block; margin-top: 2px; font-size: 11px; }
+.care-postcard {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 8px;
+  margin: 0;
+  z-index: 2;
+  text-align: center;
+  font-size: 11px;
+  color: #2a2118;
+  background: color-mix(in srgb, #fff8e8 88%, transparent);
+  border: 2px solid #1a1410;
+  padding: 4px 8px;
+}
+.tama-meters.is-veiled .meter { visibility: hidden; }
+.veil-note {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--shell-glow);
+}
 .care-hud button { pointer-events: auto; font: inherit; border: 2px solid #1a1410; background: #fff; padding: 7px 10px; cursor: pointer; }
 .care-bubble {
   position: absolute;
